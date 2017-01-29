@@ -6,12 +6,14 @@ Create Twitter bot for a few minute!
 
 - Python2.7
 - virtualenv
+  - create virtual environment
+    - https://virtualenv.readthedocs.org/en/latest/
 - AWS Account
 - aws cli
   - credentials and region
 - Twitter Account
 - Twitter App
-  - COUNSUMER_KEY and CONSUMER_SECRET
+  - CONSUMER_KEY and CONSUMER_SECRET
   - ACCESS_TOKEN and ACCESS_TOKEN_SECRET
 
 # USAGE
@@ -61,3 +63,20 @@ Shedule?(y/n):y
 Done!
 
 In default, this bot tweets per 30 minutes.
+
+# Development
+
+Run script with python-lambda-local.
+
+```
+$ python-lambda-local -f lambda_handler  ./tweet.py ./event.json
+```
+
+# Deploy
+
+```
+$ python deploy.py
+Account Name:your_twitter_bot_name
+Upload?(y/n):y
+Shedule?(y/n):n
+```

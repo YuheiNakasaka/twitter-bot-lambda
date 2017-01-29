@@ -63,9 +63,8 @@ do_schedule = raw_input('Schedule?(y/n):')
 
 # 各種実行
 print("====== Start to deploy bot project ======")
-dynamodb_setup(account_name)
 if do_upload == 'y':
-    upload(account_name)
+    upload()
 if do_schedule == 'y':
     schedule_setup(account_name)
 print("Successfuly deployed bot project!")
