@@ -1,6 +1,9 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
 import sys
+sys.path.append('./lib')
+
+import sys
 import re
 import subprocess
 import os
@@ -8,18 +11,6 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 import tweepy
 import webbrowser
-
-# ディレクトリ生成からpip installまでプロジェクト設定をする
-def project_setup(account_name):
-    # コマンド定義
-    # pip install
-    pip_intall_cmd   = "pip install -q -t ./lib -r ./requirements.txt".format(account_name=account_name)
-
-    # コマンド実行。失敗すると例外が発生する。
-    try:
-        subprocess.check_call(pip_intall_cmd, shell=True)
-    except Exception as e:
-        print(e)
 
 # トークン取得からファイル更新までbotの設定をする
 def bot_setup(account_name):
@@ -77,6 +68,5 @@ if account_name is None or re.search("^[0-9a-zA-Z_]{1,15}$", account_name) is No
 
 # 各種実行
 print("====== Start to generate bot project ======")
-project_setup(account_name)
 bot_setup(account_name)
 print("Successfuly generated bot project!")

@@ -36,14 +36,20 @@ ACCESS_TOKEN_SECRET=YOUR_ACCESS_TOKEN_SECRET
 
 ```
 
-## 2) Set up bot project
+## 2) pip install
+
+```
+$ pip install -q -t ./lib -r ./requirements.txt
+```
+
+## 3) Set up bot project
 
 ```
 $ python setup.py
 Account Name:your_twitter_bot_name
 ```
 
-## 3) Upload and Scheduling
+## 4) Upload and Scheduling
 
 ```
 $ python deploy.py

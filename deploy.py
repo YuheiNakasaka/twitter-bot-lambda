@@ -1,5 +1,7 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
+import sys
+sys.path.append('./lib')
 
 import os
 import re
