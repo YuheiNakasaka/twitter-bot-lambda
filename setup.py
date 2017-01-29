@@ -52,8 +52,8 @@ def bot_setup(account_name):
 # twitterのアカウントの設定
 def _account_setup(client):
     # 名前と自己紹介を設定
-    new_account_name = '時報君'
-    description = '時刻をお伝えします'
+    new_account_name = u'時報君'
+    description = u'時刻をお伝えします'
     client.update_profile(name=new_account_name.encode('utf8'), description=description.encode('utf8'))
 
     # プロフ画像を設定

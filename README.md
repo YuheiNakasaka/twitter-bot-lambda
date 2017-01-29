@@ -4,7 +4,7 @@ Create Twitter bot for a few minute!
 
 # Requirements
 
-- Python2.7(may be work in 3.x)
+- Python2.7
 - virtualenv
 - AWS Account
 - aws cli
