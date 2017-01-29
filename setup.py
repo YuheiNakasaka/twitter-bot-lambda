@@ -27,29 +27,13 @@ def bot_setup(account_name):
     dotenv_path = join(dirname(__file__), '.env')
     load_dotenv(dotenv_path)
 
-    # access token/secretを取得する
+    # access token/secret等を設定する
     consumer_key = os.environ.get("CONSUMER_KEY")
     consumer_secret = os.environ.get("CONSUMER_SECRET")
+    access_token = os.environ.get("ACCESS_TOKEN")
+    access_token_secret = os.environ.get("ACCESS_TOKEN_SECRET")
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth_url = auth.get_authorization_url()
-    webbrowser.open(auth_url)
-    verifier = raw_input('Verifier:')
-    auth.get_access_token(verifier)
-    new_atoken = auth.access_token
-    new_atoken_secret = auth.access_token_secret
-
-    # envファイルのトークンを取得したものに置き換える
-    env_file_name = "./.env".format(account_name=account_name)
-    env_file = open(env_file_name)
-    content = env_file.read()
-    env_file.close()
-    old_atoken = re.search("ACCESS_TOKEN=(.*)\n", content).group(1)
-    old_atoken_secret = re.search("ACCESS_TOKEN_SECRET=(.*)\n", content).group(1)
-    content = re.sub(old_atoken, new_atoken, content)
-    content = re.sub(old_atoken_secret, new_atoken_secret, content)
-    env_file = open(env_file_name, 'w')
-    env_file.write(content)
-    env_file.close()
+    auth.set_access_token(access_token, access_token_secret)
 
     # lambda.jsonのfunction nameをacccount_name+botに変える
     # lambda.jsonのaccount_id部分を置換する

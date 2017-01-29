@@ -1,6 +1,6 @@
 # twitter-bot-lambda
 
-Create Twitter bot for a minute!
+Create Twitter bot for a few minute!
 
 # Requirements
 
@@ -9,10 +9,14 @@ Create Twitter bot for a minute!
 - AWS Account
 - aws cli
   - credentials and region
+- Twitter Account
+- Twitter App
+  - COUNSUMER_KEY and CONSUMER_SECRET
+  - ACCESS_TOKEN and ACCESS_TOKEN_SECRET
 
 # USAGE
 
-## 1) Setup AWS Account Id and IAM role(has AWSLambdaBasicExecutionRole) to .env file
+## 1) Setup AWS Account Id, IAM role(has AWSLambdaBasicExecutionRole), AWS Region, Twitter CONSUMER_KEY/ CONSUMER_SECRET/ACCESS_TOKEN/ACCESS_TOKEN_SECRET to .env file
 
 Example of .env
 
@@ -22,7 +26,14 @@ AWS_ACCOUNT_ID=12345678910
 AWS_IAM_ROLE_NAME=lambda_basic_execution
 AWS_REGION_NAME=ap-northeast-1
 
-...
+# Twitter app consumer key, consumer secret
+CONSUMER_KEY=YOUR_COSUMER_KEY
+CONSUMER_SECRET=YOUR_CONSUMER_SECRET
+
+# tokens
+ACCESS_TOKEN=YOUR_ACCESS_TOKEN
+ACCESS_TOKEN_SECRET=YOUR_ACCESS_TOKEN_SECRET
+
 ```
 
 ## 2) Set up bot project
