@@ -1,0 +1,13 @@
+{
+  "name": "twitter-bot-lambda",
+  "description": "twitter bot",
+  "region": "YOUR_REGION",
+  "handler": "tweet.lambda_handler",
+  "role": "YOUR_IAM_ROLE",
+  "ignore": [
+    "\\.git$",
+    "/.*\\.pyc$"
+  ],
+  "timeout": 300,
+  "memory": 128
+}
