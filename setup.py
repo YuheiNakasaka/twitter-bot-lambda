@@ -12,12 +12,12 @@ from dotenv import load_dotenv
 import tweepy
 import webbrowser
 
+# 環境変数を読み出す
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
 # トークン取得からファイル更新までbotの設定をする
 def bot_setup(account_name):
-    # 環境変数を読み出す
-    dotenv_path = join(dirname(__file__), '.env')
-    load_dotenv(dotenv_path)
-
     # access token/secret等を設定する
     consumer_key = os.environ.get("CONSUMER_KEY")
     consumer_secret = os.environ.get("CONSUMER_SECRET")
@@ -61,7 +61,7 @@ def _account_setup(client):
     client.update_profile_image(img_path)
 
 # アカウント名取得
-account_name = raw_input('Account Name:')
+account_name = os.environ.get("TWITTER_ACCOUNT_NAME")
 if account_name is None or re.search("^[0-9a-zA-Z_]{1,15}$", account_name) is None:
     print("Error: Account Name is invalid!")
     exit()

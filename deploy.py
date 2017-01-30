@@ -10,9 +10,17 @@ import subprocess
 from os.path import join, dirname
 from dotenv import load_dotenv
 
+# 環境変数を読み出す
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
 # AWS Lambdaにデプロイを行う
 def upload():
-    deploy_cmd = "lambda-uploader  ./ --config ./lambda.json"
+    custom_venv_path = os.environ.get('CUSTOM_VENV_PATH')
+    if custom_venv_path is not None:
+        deploy_cmd = "lambda-uploader  ./ --config ./lambda.json --virtualenv={}".format(custom_venv_path)
+    else:
+        deploy_cmd = "lambda-uploader  ./ --config ./lambda.json"
 
     # 実行
     try:
@@ -23,8 +31,6 @@ def upload():
 # CloudWatchのcron設定をする
 def schedule_setup(account_name):
     # 環境変数を読み出す
-    dotenv_path = join(dirname(__file__), '.env')
-    load_dotenv(dotenv_path)
     aws_account_id = os.environ.get("AWS_ACCOUNT_ID")
     aws_region_name = os.environ.get("AWS_REGION_NAME")
 
@@ -52,7 +58,7 @@ def schedule_setup(account_name):
             print(e)
 
 # アカウント名取得
-account_name = raw_input('Account Name:')
+account_name = os.environ.get("TWITTER_ACCOUNT_NAME")
 if account_name is None or re.search("^[0-9a-zA-Z_]{1,15}$", account_name) is None:
     print("Error: Account Name is invalid!")
     exit()
