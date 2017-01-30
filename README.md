@@ -23,19 +23,24 @@ Create Twitter bot for a few minute!
 Example of .env
 
 ```
-# AWS Account ID
+# AWS settings
 AWS_ACCOUNT_ID=12345678910
 AWS_IAM_ROLE_NAME=lambda_basic_execution
 AWS_REGION_NAME=ap-northeast-1
 
+# Twitter account name
+TWITTER_ACCOUNT_NAME=yamadatarou01234
+
 # Twitter app consumer key, consumer secret
-CONSUMER_KEY=YOUR_COSUMER_KEY
-CONSUMER_SECRET=YOUR_CONSUMER_SECRET
+CONSUMER_KEY=hogehoge01234
+CONSUMER_SECRET=fugafuga01234
 
-# tokens
-ACCESS_TOKEN=YOUR_ACCESS_TOKEN
-ACCESS_TOKEN_SECRET=YOUR_ACCESS_TOKEN_SECRET
+# Twitter account tokens
+ACCESS_TOKEN=nyannyan01234
+ACCESS_TOKEN_SECRET=wanwan01234
 
+# [Options] Virtualenv path
+CUSTOM_VENV_PATH=
 ```
 
 ## 2) pip install
@@ -48,14 +53,12 @@ $ pip install -q -t ./lib -r ./requirements.txt
 
 ```
 $ python setup.py
-Account Name:your_twitter_bot_name
 ```
 
 ## 4) Upload and Scheduling
 
 ```
 $ python deploy.py
-Account Name:your_twitter_bot_name
 Upload?(y/n):y
 Shedule?(y/n):y
 ```
@@ -76,7 +79,6 @@ $ python-lambda-local -f lambda_handler  ./tweet.py ./event.json
 
 ```
 $ python deploy.py
-Account Name:your_twitter_bot_name
 Upload?(y/n):y
 Shedule?(y/n):n
 ```

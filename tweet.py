@@ -33,8 +33,9 @@ def lambda_handler(event, context):
 
 # ツイート実行
 def tweet(client):
-    now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-    text = u"現在は{}です".format(now)
+    jst = pytz.timezone('Asia/Tokyo')
+    jst_now = datetime.now(jst).strftime("%Y/%m/%d %H:%M:%S")
+    text = u"現在は{}です".format(jst_now)
     client.update_status(status=text)
 
 # gifmagazineからツイートを選んでリツイート実行
